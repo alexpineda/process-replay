@@ -1,0 +1,24 @@
+{
+  "name": "process-replay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "types": "tsc",
+    "build": "esbuild src/index.ts --bundle --platform=node --packages=external --outdir=dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Pineda <alexpineda@fastmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^20.8.6",
+    "bl": "^6.0.7",
+    "iconv-lite": "^0.6.3",
+    "pkware-wasm": "^1.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.5",
+    "typescript": "^5.2.2"
+  }
+}
