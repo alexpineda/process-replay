@@ -18,11 +18,11 @@ export const parseReplay = async ( buf: Buffer ) => {
     let version = -1;
 
     if ( magic === HeaderMagicClassic ) {
-        version = Version.classic;
+        version = Version.116;
     } else if ( magic === HeaderMagicScrModern ) {
-        version = Version.remastered;
+        version = Version.Remastered;
     } else if ( magic === HeaderMagicTitanReactor ) {
-        version = Version.titanReactor;
+        version = Version.TitanReactor;
     } else {
         throw new Error( "not a replay" );
     }
@@ -38,10 +38,10 @@ export const parseReplay = async ( buf: Buffer ) => {
     };
     let scrOffset: number | null = null;
 
-    if ( version === Version.remastered ) {
+    if ( version === Version.Remastered ) {
         scrOffset = bl.readUInt32LE( 0 );
         bl.consume( 4 );
-    } else if ( version === Version.titanReactor ) {
+    } else if ( version === Version.TitanReactor ) {
         limits = parseLMTS( await readBlock( bl, 0x1c ) );
     }
 
@@ -63,7 +63,7 @@ export const parseReplay = async ( buf: Buffer ) => {
         }
     }
 
-    if ( version === Version.remastered && scrOffset !== null ) {
+    if ( version === Version.Remastered && scrOffset !== null ) {
         const scr = new BufferList( buf.subarray( scrOffset ) );
         limits = ( await parseSCRSection( scr ) ) ?? limits;
     }

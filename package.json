@@ -1,12 +1,17 @@
 {
   "name": "process-replay",
-  "version": "1.0.0",
+  "version": "0.0.8",
   "description": "",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "browser": "dist/browser.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "types": "tsc",
-    "build": "esbuild src/index.ts --bundle --platform=node --packages=external --outdir=dist",
+    "build": "tsc && build:browser",
+    "build:browser": "node build.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alex Pineda <alexpineda@fastmail.com>",
@@ -14,6 +19,7 @@
   "dependencies": {
     "@types/node": "^20.8.6",
     "bl": "^6.0.7",
+    "esbuild-plugin-polyfill-node": "^0.3.0",
     "iconv-lite": "^0.6.3",
     "pkware-wasm": "^1.0.0"
   },

@@ -1,6 +1,7 @@
-// @ts-nocheck
-
+//@ts-nocheck
 import BufferList from "bl";
+import { CommandsStream } from "./commands-stream";
+import { range } from "../util/range";
 
 //lifted straight from jssuh
 export const CMDS = ( () => {
@@ -127,3 +128,25 @@ export function commandLength( id: number, data: Buffer | BufferList ): number |
     }
     return cmd.length( data );
 }
+
+export const detectMeleeObservers = ( threshold: number, cmds: CommandsStream ) => {
+    const buildCommands = range( 0, 11 ).fill( 0 );
+
+    let i = 0;
+    for ( const cmd of cmds.generate() ) {
+        if ( typeof cmd === "number" ) {
+            continue;
+        }
+        if ( cmd.id === CMDS.BUILD.id ) {
+            buildCommands[cmd.player] += 1;
+            i++;
+        }
+        if ( i > threshold ) {
+            break;
+        }
+    }
+
+    return buildCommands
+        .map( ( count, i ) => ( count <= 5 ? i : null ) )
+        .filter( ( x ) => x !== null );
+};

@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-        "target": "ES2020",
-        "module": "CommonJS",
-        "moduleResolution": "Node",
+        "target": "ES6",
+        "module": "ES6",
+        "moduleResolution": "Bundler",
         "noImplicitOverride": true,
         "allowJs": true,
         "checkJs": false,
@@ -21,9 +21,10 @@
         "noUncheckedIndexedAccess": false,
 
         "declaration": true,
-        "declarationDir": "./dist",
+        "declarationDir": "./dist-browser",
 
-        "outDir": "./dist",
+        "outDir": "./dist-browser",
+        "lib": ["ESNext"],
 
         "noUnusedLocals": true,
         "noUnusedParameters": true,

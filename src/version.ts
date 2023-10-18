@@ -3,7 +3,7 @@ export const HeaderMagicClassic = 0x53526572;
 export const HeaderMagicTitanReactor = 0x53526577;
 
 export const Version = {
-    classic: 0,
-    remastered: 1,
-    titanReactor: 2,
+    116: 0,
+    Remastered: 1,
+    TitanReactor: 2,
 };
