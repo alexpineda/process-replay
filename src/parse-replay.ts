@@ -18,7 +18,7 @@ export const parseReplay = async ( buf: Buffer ) => {
     let version = -1;
 
     if ( magic === HeaderMagicClassic ) {
-        version = Version.116;
+        version = Version.Classic;
     } else if ( magic === HeaderMagicScrModern ) {
         version = Version.Remastered;
     } else if ( magic === HeaderMagicTitanReactor ) {
