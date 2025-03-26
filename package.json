@@ -1,6 +1,6 @@
 {
   "name": "process-replay",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "build": "tsc && build:browser",
+    "build": "tsc && npm run build:browser",
     "build:browser": "node build.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
