@@ -18,4 +18,6 @@ build({
   ],
   tsconfig: "tsconfig.browser.json",
   platform: "browser",
+  format: "esm",
+  target: ["es2020"],
 });
